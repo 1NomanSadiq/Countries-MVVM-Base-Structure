@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash_nav_graph"
+    app:startDestination="@id/splash_fragment">
+
+
+    <fragment
+        android:id="@+id/splash_fragment"
+        android:name="nom.mvvm.structure.ui.splash.ui.SplashScreenFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash_screen">
+
+        <action
+            android:id="@+id/to_countries_activity"
+            app:destination="@id/countries_activity"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+
+    </fragment>
+
+    <activity
+        android:id="@+id/countries_activity"
+        android:name="nom.mvvm.structure.ui.countries.view.CountriesActivity"
+        tools:layout="@layout/activity_countries" />
+
+</navigation>

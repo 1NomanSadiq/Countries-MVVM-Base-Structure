@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="1dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="@dimen/_10ssp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="This is the title text"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_continent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/bg_rectangular_round"
+            android:backgroundTint="@color/black"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_2sdp"
+            android:text="Asia"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_country_name" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_flag"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_below="@id/tv_continent"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:padding="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_continent"
+            app:shapeAppearanceOverlay="@style/circleImageView"
+            app:srcCompat="@drawable/ic_circle_shape"
+            app:strokeColor="@color/black"
+            app:strokeWidth="0.5dp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_capital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_flag"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:layout_toEndOf="@id/iv_flag"
+            android:drawablePadding="@dimen/_5ssp"
+            android:text="Capital City"
+            app:drawableStartCompat="@drawable/ic_location"
+            app:layout_constraintBottom_toTopOf="@id/tv_population"
+            app:layout_constraintStart_toEndOf="@id/iv_flag"
+            app:layout_constraintTop_toTopOf="@id/iv_flag" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_population"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_capital"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:layout_toEndOf="@id/iv_flag"
+            android:drawablePadding="@dimen/_5ssp"
+            android:text="Population"
+            app:drawableStartCompat="@drawable/ic_population"
+            app:layout_constraintBottom_toTopOf="@id/tv_timezone"
+            app:layout_constraintStart_toEndOf="@id/iv_flag"
+            app:layout_constraintTop_toBottomOf="@id/tv_capital" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_timezone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_flag"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:layout_toEndOf="@id/iv_flag"
+            android:drawablePadding="@dimen/_5ssp"
+            android:text="TimeZone"
+            app:drawableStartCompat="@drawable/ic_time"
+            app:layout_constraintBottom_toBottomOf="@id/iv_flag"
+            app:layout_constraintStart_toEndOf="@id/iv_flag"
+            app:layout_constraintTop_toBottomOf="@id/tv_population" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

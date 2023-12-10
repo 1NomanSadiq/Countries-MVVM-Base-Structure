@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/countries_nav_graph"
+    app:startDestination="@id/countries_fragment">
+
+
+    <fragment
+        android:id="@+id/countries_fragment"
+        android:name="nom.mvvm.structure.ui.countries.view.CountriesFragment"
+        tools:layout="@layout/fragment_countries">
+
+        <action
+            android:id="@+id/to_country_details"
+            app:destination="@id/country_details_framgnet"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/country_details_framgnet"
+        android:name="nom.mvvm.structure.ui.countries.view.CountryDetailsFragment"
+        tools:layout="@layout/fragment_country_details" />
+
+</navigation>
