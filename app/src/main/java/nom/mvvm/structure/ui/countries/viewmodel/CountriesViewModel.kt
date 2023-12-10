@@ -21,12 +21,12 @@ class CountriesViewModel @Inject constructor(
     private val countriesRepo: CountriesRepo
 ) :
     ViewModel() {
-    private val _uiState: MutableStateFlow<CountriesUiState> =
+    private val _uiState: MutableSharedFlow<CountriesUiState> =
         MutableStateFlow(CountriesUiState.Idle)
     val uiState = _uiState.asSharedFlow()
 
-    val _selectedItem: MutableStateFlow<Country?> = MutableStateFlow(null)
-    val selectedItem = _selectedItem.asStateFlow()
+    private val _selectedItem: MutableSharedFlow<Country?> = MutableStateFlow(null)
+    val selectedItem = _selectedItem.asSharedFlow()
 
 
     private val _navigationState: MutableSharedFlow<CountriesNavigationState> = MutableSharedFlow()
