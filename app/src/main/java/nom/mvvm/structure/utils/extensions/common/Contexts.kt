@@ -56,6 +56,10 @@ import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
+import androidx.datastore.preferences.preferencesDataStore
+import nom.mvvm.structure.utils.Constants
+
+val Context.dataStore by preferencesDataStore(name = Constants.PREFS_FILENAME)
 
 val Context.displayWidth: Int
     get() = resources.displayMetrics.widthPixels

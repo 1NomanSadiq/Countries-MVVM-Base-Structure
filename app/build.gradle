@@ -89,6 +89,10 @@ dependencies {
     def navigation = '2.7.5'
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+
+    //Preferences
+    def prefs = '1.0.0'
+    implementation "androidx.datastore:datastore-preferences:$prefs"
 }
 
 configurations.implementation {

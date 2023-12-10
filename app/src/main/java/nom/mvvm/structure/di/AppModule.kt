@@ -6,8 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import nom.mvvm.structure.data.SharedPreference
-import nom.mvvm.structure.data.SharedPreferenceRepository
+import nom.mvvm.structure.data.DataStorePreference
+import nom.mvvm.structure.data.DataStorePreferenceRepository
 import nom.mvvm.structure.utils.dispatchers.DispatchersProviders
 import nom.mvvm.structure.utils.dispatchers.DispatchersProvidersImpl
 import javax.inject.Singleton
@@ -18,8 +18,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideSharedPref(@ApplicationContext context: Context): SharedPreferenceRepository =
-        SharedPreference(context)
+    fun provideSharedPref(@ApplicationContext context: Context): DataStorePreferenceRepository =
+        DataStorePreference(context)
 
 
     @Provides

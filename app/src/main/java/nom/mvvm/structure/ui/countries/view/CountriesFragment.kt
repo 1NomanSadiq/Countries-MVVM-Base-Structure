@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import nom.mvvm.structure.databinding.FragmentCountriesBinding
 import nom.mvvm.structure.ui.base.BaseFragment
@@ -16,6 +17,8 @@ import nom.mvvm.structure.ui.countries.viewmodel.CountriesViewModel
 import nom.mvvm.structure.utils.extensions.adapter.attach
 import nom.mvvm.structure.utils.extensions.common.dialog
 import nom.mvvm.structure.utils.extensions.common.launchAndRepeatWithViewLifecycle
+import nom.mvvm.structure.utils.extensions.common.toast
+import java.util.UUID
 
 @AndroidEntryPoint
 class CountriesFragment : BaseFragment<FragmentCountriesBinding>() {

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import nom.mvvm.structure.databinding.FragmentSplashScreenBinding
 import nom.mvvm.structure.ui.base.BaseFragment
@@ -15,6 +16,8 @@ import nom.mvvm.structure.ui.splash.state.SplashUiState
 import nom.mvvm.structure.ui.splash.viewmodel.SplashScreenViewModel
 import nom.mvvm.structure.utils.extensions.common.dialog
 import nom.mvvm.structure.utils.extensions.common.launchAndRepeatWithViewLifecycle
+import nom.mvvm.structure.utils.extensions.common.toast
+import java.util.UUID
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
