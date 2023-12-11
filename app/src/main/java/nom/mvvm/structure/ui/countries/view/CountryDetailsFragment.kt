@@ -18,7 +18,7 @@ import nom.mvvm.structure.ui.countries.state.CountriesUiState
 import nom.mvvm.structure.ui.countries.viewmodel.CountriesViewModel
 import nom.mvvm.structure.utils.extensions.common.dialog
 import nom.mvvm.structure.utils.extensions.common.launchAndRepeatWithViewLifecycle
-import nom.mvvm.structure.utils.extensions.ifNullOrBlank
+import nom.mvvm.structure.utils.extensions.common.ifNullOrBlank
 import nom.mvvm.structure.utils.extensions.views.load
 import nom.mvvm.structure.utils.extensions.views.setTextOrGone
 

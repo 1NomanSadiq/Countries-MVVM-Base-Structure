@@ -30,5 +30,5 @@ data class Country(
             if (demonyms?.fra?.f.isNullOrBlank().not()) finalText += "Female: ${demonyms?.fra?.f} (fra)\n"
             return finalText.removeSuffix("\n")
         }
-    val countryCode get() = "${idd?.root}${idd?.suffixes?.joinToString { "" }}"
+    val countryCode get() = "${idd?.root}${idd?.suffixes?.firstOrNull()}"
 }

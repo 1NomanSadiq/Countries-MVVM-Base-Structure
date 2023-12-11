@@ -7,6 +7,7 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.text.Spanned
 import android.text.format.DateFormat
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -27,12 +28,12 @@ import java.util.Locale
 
 
 fun Fragment.newDialog(
-    message: String,
+    message: String?,
     init: (DialogBuilder.() -> Unit)? = null
 ) = requireActivity().newDialog(message, init)
 
 fun Context.newDialog(
-    message: String,
+    message: String?,
     init: (DialogBuilder.() -> Unit)? = null
 ) = DialogBuilder(this).apply {
     message(message)
@@ -59,12 +60,12 @@ fun Fragment.newDialog(init: DialogBuilder.() -> Unit): DialogBuilder =
 fun Context.newDialog(init: DialogBuilder.() -> Unit) = DialogBuilder(this).apply { init() }
 
 fun Fragment.dialog(
-    message: String,
+    message: String?,
     init: (DialogBuilder.() -> Unit)? = null
 ) = requireActivity().dialog(message, init)
 
 fun Context.dialog(
-    message: String,
+    message: String?,
     init: (DialogBuilder.() -> Unit)? = null
 ) = DialogBuilder.getInstance(this).apply {
     message(message)
@@ -78,6 +79,33 @@ fun Fragment.dialog(
 
 fun Context.dialog(
     message: Int,
+    init: (DialogBuilder.() -> Unit)? = null
+) = DialogBuilder.getInstance(this).apply {
+    message(message)
+    if (init != null) init()
+}
+
+fun Fragment.newDialog(
+    message: Spanned?,
+    init: (DialogBuilder.() -> Unit)? = null
+) = requireActivity().newDialog(message, init)
+
+fun Context.newDialog(
+    message: Spanned?,
+    init: (DialogBuilder.() -> Unit)? = null
+) = DialogBuilder(this).apply {
+    message(message)
+    if (init != null) init()
+}
+
+
+fun Fragment.dialog(
+    message: Spanned?,
+    init: (DialogBuilder.() -> Unit)? = null
+) = requireActivity().dialog(message, init)
+
+fun Context.dialog(
+    message: Spanned?,
     init: (DialogBuilder.() -> Unit)? = null
 ) = DialogBuilder.getInstance(this).apply {
     message(message)
@@ -184,19 +212,19 @@ class DialogBuilder(private val ctx: Context) {
                 throw Exception("${exceptions.joinToString(", ")} cannot be set when custom view is set")
             }
         }
-        if (binding.message.text.toString()
-                .contains("Unable to resolve host") || binding.message.text.toString()
-                .contains("Failed to connect")
-        )
-            binding.message.text = "Unable to Connect"
         if (!dialog.isShowing)
             dialog.show()
         return this
     }
 
-    fun message(title: CharSequence) {
+    fun message(title: CharSequence?) {
         isMessageSet = true
-        binding.message.text = title
+        binding.message.text = title?.ifEmpty { "Something went wrong" } ?: "Something went wrong"
+    }
+
+    fun message(message: Spanned?) {
+        isMessageSet = true
+        binding.message.text = message?.ifEmpty { "Something went wrong" } ?: "Something went wrong"
     }
 
     fun message(resource: Int) {
@@ -217,10 +245,6 @@ class DialogBuilder(private val ctx: Context) {
         binding.positive.text = ctx.getString(textResource)
         binding.positive.setOnClickListener {
             isNegativeSet = false
-            binding.positive.text = "OK"
-            binding.negative.text = "Cancel"
-            binding.positive.setOnClickListener { dismiss() }
-            binding.negative.setOnClickListener { dismiss() }
             onPositiveClick()
         }
     }
@@ -229,10 +253,6 @@ class DialogBuilder(private val ctx: Context) {
         isPositiveSet = true
         binding.positive.text = title
         binding.positive.setOnClickListener {
-            binding.positive.text = "OK"
-            binding.negative.text = "Cancel"
-            binding.positive.setOnClickListener { dismiss() }
-            binding.negative.setOnClickListener { dismiss() }
             isNegativeSet = false
             onPositiveClick()
         }
@@ -245,10 +265,6 @@ class DialogBuilder(private val ctx: Context) {
         isNegativeSet = true
         binding.negative.text = ctx.getString(textResource)
         binding.negative.setOnClickListener {
-            binding.positive.text = "OK"
-            binding.negative.text = "Cancel"
-            binding.positive.setOnClickListener { dismiss() }
-            binding.negative.setOnClickListener { dismiss() }
             isNegativeSet = false
             onNegativeClick()
         }
@@ -258,10 +274,6 @@ class DialogBuilder(private val ctx: Context) {
         isNegativeSet = true
         binding.negative.text = title
         binding.negative.setOnClickListener {
-            binding.positive.text = "OK"
-            binding.negative.text = "Cancel"
-            binding.positive.setOnClickListener { dismiss() }
-            binding.negative.setOnClickListener { dismiss() }
             isNegativeSet = false
             onNegativeClick()
         }

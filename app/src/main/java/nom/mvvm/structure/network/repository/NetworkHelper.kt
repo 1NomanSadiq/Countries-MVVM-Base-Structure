@@ -1,7 +1,7 @@
 package nom.mvvm.structure.network.repository
 
 import nom.mvvm.structure.network.model.Error
-import nom.mvvm.structure.utils.extensions.ifNullOrBlank
+import nom.mvvm.structure.utils.extensions.common.ifNullOrBlank
 import retrofit2.Response
 import nom.mvvm.structure.utils.Result
 

@@ -7,13 +7,12 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import nom.mvvm.structure.network.model.response.countries.Country
 import nom.mvvm.structure.network.repository.CountriesRepo
 import nom.mvvm.structure.ui.countries.state.CountriesNavigationState
 import nom.mvvm.structure.ui.countries.state.CountriesUiState
-import nom.mvvm.structure.utils.Result
+import nom.mvvm.structure.utils.extensions.common.getData
 import javax.inject.Inject
 
 @HiltViewModel
@@ -41,18 +40,9 @@ class CountriesViewModel @Inject constructor(
     private suspend fun fetchCountries() {
         viewModelScope.launch {
             _uiState.emit(CountriesUiState.Loading("Loading countries"))
-            countriesRepo.getAllCountries().collectLatest {
-                _uiState.emit(
-                    when (it.status) {
-                        Result.Status.SUCCESS -> {
-                            CountriesUiState.ShowCountries(it.data!!)
-                        }
-
-                        Result.Status.ERROR -> {
-                            CountriesUiState.Error(it.message)
-                        }
-                    }
-                )
+            countriesRepo.getAllCountries().getData {
+                onSuccess = { _uiState.emit(CountriesUiState.ShowCountries(it)) }
+                onError = { _uiState.emit(CountriesUiState.Error(it)) }
             }
             _uiState.emit(CountriesUiState.Idle)
         }

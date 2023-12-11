@@ -52,3 +52,15 @@ fun <T> RecyclerView.attach(
 
 val RecyclerView.firstVisiblePosition: Int
     get() = (layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: -1
+
+val RecyclerView.lastVisiblePosition: Int
+    get() = (layoutManager as? LinearLayoutManager)?.findLastVisibleItemPosition() ?: -1
+
+fun RecyclerView.firstToLastVisiblePosition(loop: (Int) -> Unit) {
+    val firstVisiblePosition = firstVisiblePosition
+    val lastVisiblePosition = lastVisiblePosition
+
+    for (position in firstVisiblePosition..lastVisiblePosition) {
+        loop.invoke(position)
+    }
+}
