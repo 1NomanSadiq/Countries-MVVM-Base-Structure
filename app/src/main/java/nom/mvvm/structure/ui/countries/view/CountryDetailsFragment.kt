@@ -18,6 +18,7 @@ import nom.mvvm.structure.ui.countries.state.CountriesUiState
 import nom.mvvm.structure.ui.countries.viewmodel.CountriesViewModel
 import nom.mvvm.structure.utils.extensions.common.dialog
 import nom.mvvm.structure.utils.extensions.common.launchAndRepeatWithViewLifecycle
+import nom.mvvm.structure.utils.extensions.ifNullOrBlank
 import nom.mvvm.structure.utils.extensions.views.load
 import nom.mvvm.structure.utils.extensions.views.setTextOrGone
 
@@ -45,9 +46,9 @@ class CountryDetailsFragment : BaseFragment<FragmentCountryDetailsBinding>() {
 
     private fun showCountryDetails(item: Country) {
         with(binding) {
-            ivCoatOfArm.load(item.coatOfArms.png , centerCrop = false)
-            flagAlt.setTextOrGone(item.flags.alt)
-            coatOfArmAlt.setTextOrGone(item.coatOfArms.alt)
+            ivCoatOfArm.load(item.coatOfArms?.png.ifNullOrBlank { "" } , centerCrop = false)
+            flagAlt.setTextOrGone(item.flags?.alt)
+            coatOfArmAlt.setTextOrGone(item.coatOfArms?.alt)
             name.setTitleAndValueOrGone("Name:", item.nameStr)
             capital.setTitleAndValueOrGone("Capital:", item.capitals)
             subregion.setTitleAndValueOrGone("SubRegion:", item.subregion)
