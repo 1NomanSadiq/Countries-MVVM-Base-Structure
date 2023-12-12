@@ -1,6 +1,6 @@
 package nom.mvvm.structure.network.api
 
-import nom.mvvm.structure.network.model.response.countries.Country
+import nom.mvvm.structure.data.database.providerfacility.Country
 import retrofit2.Response
 import retrofit2.http.GET
 

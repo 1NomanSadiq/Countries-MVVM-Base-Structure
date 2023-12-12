@@ -3,8 +3,8 @@ package nom.mvvm.structure.ui.countries.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import nom.mvvm.structure.R
+import nom.mvvm.structure.data.database.providerfacility.Country
 import nom.mvvm.structure.databinding.ItemCountryBinding
-import nom.mvvm.structure.network.model.response.countries.Country
 import nom.mvvm.structure.utils.extensions.adapter.BaseAdapter
 import nom.mvvm.structure.utils.extensions.common.ifNullOrBlank
 import nom.mvvm.structure.utils.extensions.views.load
