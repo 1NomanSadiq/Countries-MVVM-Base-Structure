@@ -1,46 +1,35 @@
 package nom.mvvm.structure.network.repository
 
-import com.truebilling.truechargecapture.drs.data.database.providerfacility.CountryDao
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import nom.mvvm.structure.data.database.providerfacility.Country
+import nom.mvvm.structure.data.database.country.Country
+import nom.mvvm.structure.data.database.country.CountryDao
 import nom.mvvm.structure.network.api.ApiService
-import nom.mvvm.structure.network.repository.NetworkHelper.getResponse
+import nom.mvvm.structure.network.connectivity.NetworkConnectivity
 import nom.mvvm.structure.utils.Result
+import nom.mvvm.structure.utils.extensions.common.executeRequest
+import nom.mvvm.structure.utils.extensions.common.fetchData
 import javax.inject.Inject
 
 class CountriesRepo @Inject constructor(
     private val countryDao: CountryDao,
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val networkConnectivity: NetworkConnectivity
 ) {
-    suspend fun getAllCountries(): Flow<Result<List<Country>>> {
-        return flow {
-            val result = fetchCountriesFromApi()
-            when (result.status) {
-                Result.Status.SUCCESS -> {
-                    saveCountriesToDatabase(result.data!!)
-                    emit(Result.success(result.data))
-                }
-
-                Result.Status.ERROR -> {
-                    emit(Result.error(result.message))
-                }
-
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
+    suspend fun getAllCountries() = fetchData(
+        networkConnectivity,
+        ::fetchCountriesFromApi,
+        ::saveCountriesToDatabase,
+        ::fetchCountriesFromDatabase
+    )
 
     private fun fetchCountriesFromDatabase(): Flow<Result<List<Country>>> {
         return countryDao.getAllCountries()
-            .map { countries -> Result.success(countries) }
+            .map { countries -> Result.Success(countries) }
     }
 
     private suspend fun fetchCountriesFromApi(): Result<List<Country>> {
-        return getResponse(
+        return executeRequest(
             request = { apiService.getPopularData() },
             defaultErrorMessage = "Error fetching countries data"
         )
@@ -49,5 +38,4 @@ class CountriesRepo @Inject constructor(
     private suspend fun saveCountriesToDatabase(countries: List<Country>) {
         countryDao.insertAll(countries)
     }
-
 }

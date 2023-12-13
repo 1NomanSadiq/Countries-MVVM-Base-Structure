@@ -1,4 +1,4 @@
-package nom.mvvm.structure.data.database.providerfacility
+package nom.mvvm.structure.data.database.country
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,7 +13,6 @@ import nom.mvvm.structure.network.model.response.countries.Name
 
 @Entity
 data class Country(
-    @PrimaryKey(autoGenerate = true) val _id: Int,
     val area: Double?,
     @TypeConverters(Converters::class) val capital: List<String>?,
     @TypeConverters(Converters::class) val coatOfArms: CoatOfArms?,
@@ -21,7 +20,7 @@ data class Country(
     @TypeConverters(Converters::class) val demonyms: Demonyms?,
     @TypeConverters(Converters::class) val flags: Flags?,
     @TypeConverters(Converters::class) val idd: Idd?,
-    @TypeConverters(Converters::class) val latlng: List<Double>?,
+    @TypeConverters(Converters::class) @PrimaryKey(autoGenerate = false) val latlng: List<Double>,
     @TypeConverters(Converters::class) val maps: Maps?,
     val population: Int?,
     val subregion: String?,
@@ -32,7 +31,7 @@ data class Country(
     val capitals get() = capital?.joinToString(", ")
     val continent get() = continents?.joinToString(", ")
     val timezone get() = timezones?.joinToString(", ")
-    val latlngStr get() = latlng?.joinToString(", ")
+    val latlngStr get() = latlng.joinToString(", ")
     val nameStr get() = "Common: ${name?.common}\nOfficial: ${name?.official}"
     val demonym: String
         get() {

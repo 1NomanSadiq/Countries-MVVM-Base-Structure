@@ -2,7 +2,7 @@ package nom.mvvm.structure.di
 
 import android.content.Context
 import androidx.room.Room
-import com.truebilling.truechargecapture.drs.data.database.providerfacility.CountryDao
+import nom.mvvm.structure.data.database.country.CountryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

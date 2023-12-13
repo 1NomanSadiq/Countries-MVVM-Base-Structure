@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import nom.mvvm.structure.data.database.providerfacility.Country
+import nom.mvvm.structure.data.database.country.Country
 import nom.mvvm.structure.databinding.FragmentCountryDetailsBinding
 import nom.mvvm.structure.databinding.LayoutTitleAndValueBinding
 import nom.mvvm.structure.ui.base.BaseFragment

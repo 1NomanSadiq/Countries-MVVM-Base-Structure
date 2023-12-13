@@ -1,6 +1,6 @@
 package nom.mvvm.structure.ui.countries.state
 
-import nom.mvvm.structure.data.database.providerfacility.Country
+import nom.mvvm.structure.data.database.country.Country
 
 sealed class CountriesUiState {
     data object Idle : CountriesUiState()

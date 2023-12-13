@@ -1,9 +1,9 @@
 package com.truebilling.truechargecapture.drs.data.database.repository
 
 
-import com.truebilling.truechargecapture.drs.data.database.providerfacility.CountryDao
+import nom.mvvm.structure.data.database.country.CountryDao
 import kotlinx.coroutines.flow.Flow
-import nom.mvvm.structure.data.database.providerfacility.Country
+import nom.mvvm.structure.data.database.country.Country
 import javax.inject.Inject
 import javax.inject.Singleton
 

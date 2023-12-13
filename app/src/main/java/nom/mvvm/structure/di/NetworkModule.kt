@@ -10,6 +10,7 @@ import nom.mvvm.structure.BuildConfig
 import nom.mvvm.structure.network.api.ApiConstants
 import nom.mvvm.structure.network.api.ApiService
 import nom.mvvm.structure.network.api.CustomInterceptor
+import nom.mvvm.structure.network.connectivity.NetworkConnectivity
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -60,4 +61,8 @@ class NetworkModule {
     @Singleton
     @Provides
     fun providesAPIService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun providesNetworkConnectivity(@ApplicationContext context: Context) = NetworkConnectivity(context)
 }

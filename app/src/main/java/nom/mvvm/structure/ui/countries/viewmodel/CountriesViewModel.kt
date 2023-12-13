@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import nom.mvvm.structure.data.database.providerfacility.Country
+import nom.mvvm.structure.data.database.country.Country
 import nom.mvvm.structure.network.repository.CountriesRepo
 import nom.mvvm.structure.ui.countries.state.CountriesNavigationState
 import nom.mvvm.structure.ui.countries.state.CountriesUiState
-import nom.mvvm.structure.utils.extensions.common.getData
+import nom.mvvm.structure.utils.extensions.common.observeData
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,7 +38,7 @@ class CountriesViewModel @Inject constructor(
     private fun fetchCountries() {
         viewModelScope.launch {
             _uiState.emit(CountriesUiState.Loading("Loading countries"))
-            countriesRepo.getAllCountries().getData {
+            countriesRepo.getAllCountries().observeData {
                 onSuccess = { _uiState.emit(CountriesUiState.ShowCountries(it)) }
                 onError = { _uiState.emit(CountriesUiState.Error(it)) }
             }
