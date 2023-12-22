@@ -54,7 +54,7 @@ suspend fun <T> executeRequest(
             Result.Error("${errorResponse.status_code} ".trim() + errorResponse.status_message.ifNullOrBlank { defaultErrorMessage })
         }
     } catch (e: Throwable) {
-        Result.Error(e.message ?: defaultErrorMessage)
+        Result.Error(e.message.ifNullOrBlank { defaultErrorMessage })
     }
 }
 
