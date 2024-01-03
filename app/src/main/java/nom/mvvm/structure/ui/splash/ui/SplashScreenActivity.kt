@@ -23,7 +23,6 @@ import java.util.Locale
 
 @AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
-
     private val binding by lazy { FragmentSplashScreenBinding.inflate(layoutInflater) }
     private var tts: TextToSpeech? = null
     private var currentPrompt = ""
