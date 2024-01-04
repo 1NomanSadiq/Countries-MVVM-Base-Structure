@@ -10,6 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import nom.mvvm.structure.data.database.AppDatabase
 import nom.mvvm.structure.data.database.DatabaseConstants.DATABASE_NAME
+import nom.mvvm.structure.data.database.country.ItemDao
 import javax.inject.Singleton
 
 @Module
@@ -29,6 +30,11 @@ class DatabaseModule {
     @Provides
     fun provideCountryDao(appDatabase: AppDatabase): CountryDao {
         return appDatabase.countryDao()
+    }
+
+    @Provides
+    fun provideItemDao(appDatabase: AppDatabase): ItemDao {
+        return appDatabase.itemDao()
     }
 
 }

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="@dimen/_20sdp"
             android:id="@+id/textInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
@@ -29,6 +30,7 @@
                 android:id="@+id/dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="0dp"
                 android:inputType="none"
                 android:textSize="@dimen/_15ssp" />
 
@@ -105,7 +107,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tv_rate">
 
-                            <com.google.android.material.textfield.TextInputEditText
+                            <nom.mvvm.structure.ui.splash.ui.CustomEditText
                                 android:id="@+id/et_rate_kg"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
@@ -146,12 +148,12 @@
                     app:layout_constraintStart_toEndOf="@id/weight_kg"
                     app:layout_constraintTop_toBottomOf="@id/tv_weight">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <nom.mvvm.structure.ui.splash.ui.CustomEditText
                         android:id="@+id/et_weight_g"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:hint="وزن (گرام)"
-                        android:inputType="numberDecimal"
+                        android:inputType="number"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:textColor="@color/black"
@@ -172,12 +174,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_weight">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <nom.mvvm.structure.ui.splash.ui.CustomEditText
                         android:id="@+id/et_weight_kg"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:hint="وزن (کلوگرام)"
-                        android:inputType="numberDecimal"
+                        android:inputType="number"
                         android:padding="0dp"
                         android:singleLine="true"
                         android:textColor="@color/black"
@@ -210,16 +212,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_price">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <nom.mvvm.structure.ui.splash.ui.CustomEditText
                         android:id="@+id/et_price"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:focusable="false"
                         android:hint="روپے"
-                        android:inputType="none"
+                        android:inputType="number"
                         android:padding="0dp"
                         android:singleLine="true"
-                        android:text="100"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_13ssp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -229,8 +229,8 @@
                     android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
                     android:text="100 روپے فی کلو کے حساب سے 5 کلوگرام سریا کی قیمت 280 روپے ہے۔"
                     android:textSize="@dimen/_20sdp"
                     android:textStyle="bold"

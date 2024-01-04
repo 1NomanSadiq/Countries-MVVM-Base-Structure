@@ -2,8 +2,10 @@ package nom.mvvm.structure.utils.extensions.views
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.EditText
 import android.widget.TextView
 import androidx.core.view.isVisible
+import nom.mvvm.structure.R
 
 fun TextView.textWatcher(init: KTextWatcher.() -> Unit) {
     addTextChangedListener(KTextWatcher().apply(init))
@@ -45,3 +47,23 @@ class KTextWatcher : TextWatcher {
         _afterTextChanged = listener
     }
 }
+
+fun EditText.addUniqueTextChangedListener(onTextChanged: (text: CharSequence?) -> Unit) {
+    removeTextChangedListener(this.onTextChangedListener)
+    val listener = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            onTextChanged(s)
+        }
+
+        override fun afterTextChanged(s: Editable?) {}
+    }
+
+    onTextChangedListener = listener
+    addTextChangedListener(listener)
+}
+
+private var EditText.onTextChangedListener: TextWatcher?
+    get() = getTag(R.string.textChangeListener) as? TextWatcher
+    set(value) = setTag(R.string.textChangeListener, value)

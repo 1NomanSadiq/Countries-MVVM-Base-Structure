@@ -1,40 +1,46 @@
 package nom.mvvm.structure.ui.splash.viewmodel
 
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import nom.mvvm.structure.data.database.country.Item
+import nom.mvvm.structure.data.database.country.ItemDao
 import nom.mvvm.structure.ui.base.BaseViewModel
-import nom.mvvm.structure.ui.countries.state.CountriesUiState
-import nom.mvvm.structure.ui.splash.state.SplashNavigationState
-import nom.mvvm.structure.ui.splash.state.SplashUiState
 import nom.mvvm.structure.utils.dispatchers.DispatchersProviders
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashScreenViewModel
-@Inject
-constructor(
-    dispatchers: DispatchersProviders
+class SplashScreenViewModel @Inject constructor(
+    dispatchers: DispatchersProviders,
+    private val itemDao: ItemDao,
 ) : BaseViewModel(dispatchers) {
+    private val itemsNames = listOf("سریا", "پائپ", "چادر چورس", "چادر گول ٹکی", "چادر رِنگ", "ہچ")
+    private val items = mutableListOf<Item>()
 
-    private val _uiState = MutableStateFlow<SplashUiState>(SplashUiState.Idle)
-    val uiState = _uiState.asStateFlow()
+    private val _items = MutableStateFlow<List<Item>>(emptyList())
+    val itemList = _items.asStateFlow()
 
-    private val _navigationState: MutableSharedFlow<SplashNavigationState> = MutableSharedFlow()
-    val navigationState = _navigationState.asSharedFlow()
-
+    val selectedItem = MutableStateFlow<Item?>(null)
 
     init {
-        onInitialState()
+        itemsNames.forEach {
+            items.add(Item(it))
+        }
+        launchOnMainImmediate {
+            itemDao.getAllItems().collectLatest {
+                if (it.isEmpty()) {
+                    itemDao.insertAll(items)
+                } else {
+                    _items.emit(it)
+                }
+            }
+        }
     }
 
-    private fun onInitialState() = launchOnMainImmediate {
-        _uiState.emit(SplashUiState.Loading)
-        delay(2000)
-        _navigationState.emit(SplashNavigationState.MoveToCountriesScreen)
+    suspend fun updateItem(item: Item) {
+        itemDao.insertAll(listOf(item))
     }
+
 }
 

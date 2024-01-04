@@ -34,10 +34,6 @@ class SplashScreenFragment : BaseFragment<FragmentSplashScreenBinding>() {
 
 
     private fun observeViewModel() = with(viewModel) {
-        launchAndRepeatWithViewLifecycle {
-            launch { uiState.collect { handleUiState(it) } }
-            launch { navigationState.collect { handleNavigationState(it) } }
-        }
 
     }
 
