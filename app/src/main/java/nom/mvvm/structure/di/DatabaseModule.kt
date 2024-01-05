@@ -2,7 +2,6 @@ package nom.mvvm.structure.di
 
 import android.content.Context
 import androidx.room.Room
-import nom.mvvm.structure.data.database.country.CountryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,11 +24,6 @@ class DatabaseModule {
             DATABASE_NAME
         ).build()
 
-    }
-
-    @Provides
-    fun provideCountryDao(appDatabase: AppDatabase): CountryDao {
-        return appDatabase.countryDao()
     }
 
     @Provides

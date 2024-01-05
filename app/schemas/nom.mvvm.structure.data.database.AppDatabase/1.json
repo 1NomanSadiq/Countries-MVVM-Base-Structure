@@ -2,100 +2,8 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "10bd507193c36132c9ba37e739731381",
+    "identityHash": "774e9d3071b19405bf08eec14322371a",
     "entities": [
-      {
-        "tableName": "Country",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`area` REAL, `capital` TEXT, `coatOfArms` TEXT, `continents` TEXT, `demonyms` TEXT, `flags` TEXT, `idd` TEXT, `latlng` TEXT NOT NULL, `maps` TEXT, `population` INTEGER, `subregion` TEXT, `timezones` TEXT, `name` TEXT, PRIMARY KEY(`latlng`))",
-        "fields": [
-          {
-            "fieldPath": "area",
-            "columnName": "area",
-            "affinity": "REAL",
-            "notNull": false
-          },
-          {
-            "fieldPath": "capital",
-            "columnName": "capital",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "coatOfArms",
-            "columnName": "coatOfArms",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "continents",
-            "columnName": "continents",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "demonyms",
-            "columnName": "demonyms",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "flags",
-            "columnName": "flags",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "idd",
-            "columnName": "idd",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "latlng",
-            "columnName": "latlng",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "maps",
-            "columnName": "maps",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "population",
-            "columnName": "population",
-            "affinity": "INTEGER",
-            "notNull": false
-          },
-          {
-            "fieldPath": "subregion",
-            "columnName": "subregion",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "timezones",
-            "columnName": "timezones",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": false
-          }
-        ],
-        "primaryKey": {
-          "autoGenerate": false,
-          "columnNames": [
-            "latlng"
-          ]
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
       {
         "tableName": "Item",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `ratePerKg` INTEGER NOT NULL)",
@@ -132,7 +40,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '10bd507193c36132c9ba37e739731381')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '774e9d3071b19405bf08eec14322371a')"
     ]
   }
 }

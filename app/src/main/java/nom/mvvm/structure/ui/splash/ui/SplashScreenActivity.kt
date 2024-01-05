@@ -1,6 +1,7 @@
 package nom.mvvm.structure.ui.splash.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
@@ -28,7 +29,8 @@ class SplashScreenActivity : AppCompatActivity() {
     private val viewModel: SplashScreenViewModel by viewModels()
     private val binding by lazy { FragmentSplashScreenBinding.inflate(layoutInflater) }
     private val selectedItem = MutableLiveData<Item>()
-    private val position = MutableLiveData(0)
+    private var position = 0
+    private var positionChanged = false
     private var rate = 0
     private var isUpdating = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setVisibility()
         lifecycleScope.launch {
             viewModel.itemList.collectLatest {
+                Log.d("SplashScreenActivity", "itemList: $it")
                 if (it.isNotEmpty()) {
                     val itemsAdapter =
                         ArrayAdapter(
@@ -46,12 +49,14 @@ class SplashScreenActivity : AppCompatActivity() {
                     binding.dropdown.setAdapter(itemsAdapter)
                     binding.dropdown.onItemClickListener =
                         AdapterView.OnItemClickListener { _, _, position, _ ->
-                            this@SplashScreenActivity.position.value = position
+                            positionChanged = this@SplashScreenActivity.position == position
+                            Log.d("SplashScreenActivity", "onItemClick: $position")
+                            this@SplashScreenActivity.position = position
                             selectedItem.value = it[position]
                         }
                     if (selectedItem.value == null) {
-                        selectedItem.value = it[position.value ?: 0]
-                        binding.dropdown.setText(it[position.value ?: 0].name, false)
+                        selectedItem.value = it[position]
+                        binding.dropdown.setText(it[position].name, false)
                     }
                 }
             }
@@ -59,11 +64,14 @@ class SplashScreenActivity : AppCompatActivity() {
         }
 
         selectedItem.observe(this) {
+            Log.d("SplashScreenActivity", "selectedItem: $it")
+            rate = it?.ratePerKg ?: 0
             it?.let {
-                rate = it.ratePerKg
+                isUpdating = true
                 binding.etPrice.setText("")
                 binding.etWeightKg.setText("")
                 binding.etWeightG.setText("")
+                isUpdating = false
                 binding.openRate.isVisible = (rate) > 0
                 binding.closeRate.isVisible = !binding.openRate.isVisible
                 binding.rate1.isVisible = !binding.openRate.isVisible
@@ -83,42 +91,37 @@ class SplashScreenActivity : AppCompatActivity() {
 
                 val coroutineScope = CoroutineScope(Dispatchers.Main)
                 var insertJob: Job? = null
+                isUpdating = true
                 binding.etRateKg.setText(if ((rate) > 0) rate.toString() else "")
+                isUpdating = false
                 binding.etRateKg.addUniqueTextChangedListener { nullableQuery ->
                     nullableQuery?.let { query ->
-                        rate = query.toString().toIntOrNull()?: 0
+                        if (!isUpdating) {
+                            rate = query.toString().toIntOrNull() ?: 0
+                            Log.d("SplashScreenActivity", "rate in listener: $rate")
+                            updatePrice()
+                            insertJob?.cancel()
+                            insertJob = coroutineScope.launch {
+                                delay(1000)
+                                if (query.isNotEmpty()) {
+                                    val item = it.copy(
+                                        ratePerKg = query.toString().toInt()
+                                    )
+                                    viewModel.updateItem(item)
+                                } else setVisibility()
+                            }
+                        }
+                    }
+                }
+
+                binding.etWeightKg.addUniqueTextChangedListener {
+                    if (!isUpdating)
                         updatePrice()
-                        insertJob?.cancel()
-                        insertJob = coroutineScope.launch {
-                            delay(1000)
-                            if (query.isNotEmpty()) {
-                                val item = it.copy(
-                                    ratePerKg = query.toString().toInt()
-                                )
-                                viewModel.updateItem(item)
-                            }
-                        }
-                    }
                 }
 
-                binding.etWeightKg.addUniqueTextChangedListener { nullableQuery ->
-                    if (!isUpdating) {
-                        nullableQuery?.let { query ->
-                            if (query.isNotEmpty()) {
-                                updatePrice()
-                            }
-                        }
-                    }
-                }
-
-                binding.etWeightG.addUniqueTextChangedListener { nullableQuery ->
-                    if (!isUpdating) {
-                        nullableQuery?.let { query ->
-                            if (query.isNotEmpty()) {
-                                updatePrice()
-                            }
-                        }
-                    }
+                binding.etWeightG.addUniqueTextChangedListener {
+                    if (!isUpdating)
+                        updatePrice()
                 }
 
                 binding.etPrice.addUniqueTextChangedListener { nullableQuery ->
@@ -153,8 +156,12 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun updatePrice() {
         isUpdating = true
-        val totalWeightInKg = (if (binding.etWeightKg.text.isNullOrBlank()) 0.0 else binding.etWeightKg.text.toString().toDouble())
-        val totalWeightInGrams = totalWeightInKg * 1000 + (if (binding.etWeightG.text.isNullOrBlank()) 0.0 else binding.etWeightG.text.toString().toDouble())
+        val totalWeightInKg =
+            (if (binding.etWeightKg.text.isNullOrBlank()) 0.0 else binding.etWeightKg.text.toString()
+                .toDouble())
+        val totalWeightInGrams =
+            totalWeightInKg * 1000 + (if (binding.etWeightG.text.isNullOrBlank()) 0.0 else binding.etWeightG.text.toString()
+                .toDouble())
         val price = ((totalWeightInGrams / 1000) * (rate))
         binding.etPrice.setText(if (price > 0.0) price.toString() else null)
         isUpdating = false
@@ -170,10 +177,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val isValidInput = isWeightGreaterThanZero && isPriceGreaterThanZero
 
-        binding.tvDescription.isVisible = isValidInput
+        binding.tvDescription.isVisible = isValidInput && rate > 0
         if (isValidInput) {
             binding.tvDescription.text = generateDescription(
-                selectedItem.value?.name?: "",
+                selectedItem.value?.name ?: "",
                 rate,
                 weightKg.toInt(),
                 weightG.toInt(),

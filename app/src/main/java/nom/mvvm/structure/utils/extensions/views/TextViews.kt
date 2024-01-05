@@ -49,7 +49,7 @@ class KTextWatcher : TextWatcher {
 }
 
 fun EditText.addUniqueTextChangedListener(onTextChanged: (text: CharSequence?) -> Unit) {
-    removeTextChangedListener(this.onTextChangedListener)
+    removeTextChangedListener(onTextChangedListener)
     val listener = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 

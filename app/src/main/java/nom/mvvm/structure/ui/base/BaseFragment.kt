@@ -9,12 +9,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import nom.mvvm.structure.data.DataStorePreferenceRepository
-import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
-    @Inject
-    lateinit var prefs: DataStorePreferenceRepository
+
 
     protected val binding: VB by lazy { inflateViewBinding(layoutInflater) }
 
