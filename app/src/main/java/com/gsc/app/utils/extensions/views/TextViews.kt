@@ -2,8 +2,22 @@ package com.gsc.app.utils.extensions.views
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.gsc.app.R
+import com.gsc.app.utils.misc.NoFilterArrayAdapter
+
+fun <T> AutoCompleteTextView.attach(items: List<T>, filter: Boolean = false) {
+    val adapter =
+        if (filter) ArrayAdapter(context, R.layout.dropdown_item, items) else NoFilterArrayAdapter(
+            context,
+            R.layout.dropdown_item,
+            items
+        )
+    setAdapter(adapter)
+}
 
 fun TextView.textWatcher(init: KTextWatcher.() -> Unit) {
     addTextChangedListener(KTextWatcher().apply(init))
@@ -12,7 +26,10 @@ fun TextView.textWatcher(init: KTextWatcher.() -> Unit) {
 fun TextView.setTextOrGone(value: String?) {
     if (value.isNullOrEmpty())
         isVisible = false
-    else text = value
+    else {
+        text = value
+        isVisible = true
+    }
 }
 
 class KTextWatcher : TextWatcher {

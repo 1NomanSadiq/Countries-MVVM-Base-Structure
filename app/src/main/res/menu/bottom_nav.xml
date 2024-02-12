@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/map_fragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/map" />
+    <item
+        android:id="@+id/routes_fragment"
+        android:icon="@drawable/ic_map"
+        android:title="@string/routes" />
+    <item
+        android:id="@+id/my_locations_placeholder_fragment"
+        android:title="@string/my_locations" />
+    <item
+        android:id="@+id/updates_fragment"
+        android:icon="@drawable/ic_bell"
+        android:title="@string/updates" />
+    <item
+        android:id="@+id/support_fragment"
+        android:icon="@drawable/ic_headset"
+        android:title="@string/support" />
+</menu>

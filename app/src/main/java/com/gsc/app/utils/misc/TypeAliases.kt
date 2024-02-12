@@ -1,4 +1,4 @@
-package com.gsc.app.utils.extensions.adapter
+package com.gsc.app.utils.misc
 
 import androidx.recyclerview.widget.DiffUtil
 

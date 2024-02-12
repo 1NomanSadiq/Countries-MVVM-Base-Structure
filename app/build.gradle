@@ -91,6 +91,8 @@ dependencies {
     //Preferences
     def prefs = '1.0.0'
     implementation "androidx.datastore:datastore-preferences:$prefs"
+
+    implementation 'id.zelory:compressor:3.0.1'
 }
 
 configurations.implementation {

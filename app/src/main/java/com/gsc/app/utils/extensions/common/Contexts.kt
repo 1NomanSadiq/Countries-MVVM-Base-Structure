@@ -56,16 +56,16 @@ import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
-import androidx.datastore.preferences.preferencesDataStore
-import com.gsc.app.utils.Constants
-
-val Context.dataStore by preferencesDataStore(name = Constants.PREFS_FILENAME)
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 
 val Context.displayWidth: Int
     get() = resources.displayMetrics.widthPixels
 
 val Context.displayHeight: Int
     get() = resources.displayMetrics.heightPixels
+
+fun Context.drawable(@DrawableRes id: Int?)  = id?.let { AppCompatResources.getDrawable(this, it) }
 
 fun Context.inflateLayout(
     layoutResId: Int,
@@ -128,7 +128,7 @@ val Context.dropBoxManager: DropBoxManager
     get() = getSystemService(Context.DROPBOX_SERVICE) as DropBoxManager
 
 val Context.inputMethodManager: InputMethodManager
-    get() = getSystemService(InputMethodManager::class.java)
+    get() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
 val Context.inputManager: InputManager
     get() = getSystemService(Context.INPUT_SERVICE) as InputManager

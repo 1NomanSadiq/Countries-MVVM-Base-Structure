@@ -27,6 +27,11 @@
         </activity>
 
         <activity
+            android:name=".ui.home.view.HomeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name="com.gsc.app.utils.permissions.PermissionsActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.Transparent.NoActionBar"

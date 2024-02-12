@@ -1,4 +1,4 @@
-package com.gsc.app.utils.extensions.adapter
+package com.gsc.app.utils.misc
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,9 +24,9 @@ abstract class BaseAdapter<T, VB : ViewBinding>(private val diffUtilCallbackMake
     }
 
     override fun onBindViewHolder(holder: ViewHolder<VB>, position: Int) {
+        val finalPosition = holder.absoluteAdapterPosition
         if (onItemClickListener != null) {
             holder.itemView.setOnClickListener {
-                val finalPosition = holder.absoluteAdapterPosition
                 if (finalPosition != RecyclerView.NO_POSITION) {
                     onItemClickListener?.invoke(finalPosition, getItem(finalPosition))
                 }
@@ -35,15 +35,14 @@ abstract class BaseAdapter<T, VB : ViewBinding>(private val diffUtilCallbackMake
 
         onLongItemClickListener?.let { onLongClick ->
             holder.itemView.setOnLongClickListener {
-                val finalPosition = holder.absoluteAdapterPosition
                 if (finalPosition != RecyclerView.NO_POSITION) {
                     onLongClick.invoke(finalPosition, getItem(finalPosition))
                 } else false
             }
         }
 
-        bind(holder.binding, getItem(position))
-        onBottomReachedListener?.invoke(isBottom(holder))
+        bind(holder.binding, getItem(finalPosition))
+        if (isBottom(holder)) onBottomReachedListener?.invoke(isBottom(holder))
     }
 
     override fun getItemCount() = getData().size
@@ -59,6 +58,7 @@ abstract class BaseAdapter<T, VB : ViewBinding>(private val diffUtilCallbackMake
     }
 
     fun isEmpty() = itemCount == 0
+    fun isNotEmpty() = itemCount != 0
     fun getItem(position: Int): T = listDiffer.currentList[position]
     fun getItemPosition(item: T): Int = getData().indexOf(item)
     fun removeItem(item: T) {

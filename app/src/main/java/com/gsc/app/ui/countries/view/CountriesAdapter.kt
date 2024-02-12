@@ -2,13 +2,14 @@ package com.gsc.app.ui.countries.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import coil.load
+import coil.size.Scale
 import com.gsc.app.R
 import com.gsc.app.databinding.ItemCountryBinding
 import com.gsc.app.network.model.response.countries.Country
-import com.gsc.app.utils.extensions.adapter.BaseAdapter
 import com.gsc.app.utils.extensions.common.ifNullOrBlank
-import com.gsc.app.utils.extensions.views.load
 import com.gsc.app.utils.extensions.views.setTextOrGone
+import com.gsc.app.utils.misc.BaseAdapter
 
 
 class CountriesAdapter : BaseAdapter<Country, ItemCountryBinding>() {
@@ -22,7 +23,10 @@ class CountriesAdapter : BaseAdapter<Country, ItemCountryBinding>() {
             tvContinent.setTextOrGone(item.continents?.firstOrNull())
             tvPopulation.setTextOrGone(item.population.toString())
             tvTimezone.setTextOrGone(item.timezones?.firstOrNull())
-            ivFlag.load(item.flags?.png.ifNullOrBlank { "" }, R.drawable.ic_circle_shape)
+            ivFlag.load(item.flags?.png.ifNullOrBlank { "" }) {
+                placeholder(R.drawable.ic_circle_shape)
+                scale(Scale.FILL)
+            }
         }
     }
 }

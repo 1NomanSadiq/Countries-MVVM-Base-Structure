@@ -1,7 +1,6 @@
 package com.gsc.app.utils.extensions.common
 
 import android.accounts.AccountManager
-import android.app.Activity
 import android.app.ActivityManager
 import android.app.AlarmManager
 import android.app.AppOpsManager
@@ -57,6 +56,7 @@ import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -66,6 +66,11 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+
+inline fun <reified T> Fragment.intentToObject(
+    defaultValue: T? = null,
+    key: String? = null
+) = requireActivity().intentToObject(defaultValue, key)
 
 inline fun Fragment.launchAndRepeatWithViewLifecycle(
     lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
@@ -78,14 +83,7 @@ inline fun Fragment.launchAndRepeatWithViewLifecycle(
     }
 }
 
-fun Fragment.hideKeyboard(view: View) = requireActivity().hideKeyboard(view)
-
-fun Activity.showKeyboard(view: View) {
-    inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-}
-
-fun Fragment.showKeyboard(view: View) = requireActivity().showKeyboard(view)
-
+fun Fragment.drawable(@DrawableRes id: Int) = requireActivity().drawable(id)
 
 fun Fragment.toast(text: CharSequence, duration: Int = Toast.LENGTH_SHORT): Unit =
     requireActivity().toast(text, duration)
@@ -116,6 +114,8 @@ fun Fragment.navigate(
 ) = requireActivity().findNavController(viewId).navigate(action)
 
 fun Fragment.finish() = requireActivity().finish()
+
+fun Fragment.finishAffinity() = requireActivity().finishAffinity()
 
 val Fragment.displayWidth: Int
     get() = requireContext().resources.displayMetrics.widthPixels

@@ -7,9 +7,9 @@ import android.view.View
 import androidx.core.text.util.LinkifyCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import coil.load
+import coil.size.Scale
+import com.gsc.app.R
 import com.gsc.app.databinding.FragmentCountryDetailsBinding
 import com.gsc.app.databinding.LayoutTitleAndValueBinding
 import com.gsc.app.network.model.response.countries.Country
@@ -17,10 +17,12 @@ import com.gsc.app.ui.base.BaseFragment
 import com.gsc.app.ui.countries.state.CountriesUiState
 import com.gsc.app.ui.countries.viewmodel.CountriesViewModel
 import com.gsc.app.utils.extensions.common.dialog
-import com.gsc.app.utils.extensions.common.launchAndRepeatWithViewLifecycle
 import com.gsc.app.utils.extensions.common.ifNullOrBlank
-import com.gsc.app.utils.extensions.views.load
+import com.gsc.app.utils.extensions.common.launchAndRepeatWithViewLifecycle
 import com.gsc.app.utils.extensions.views.setTextOrGone
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CountryDetailsFragment : BaseFragment<FragmentCountryDetailsBinding>() {
@@ -46,7 +48,10 @@ class CountryDetailsFragment : BaseFragment<FragmentCountryDetailsBinding>() {
 
     private fun showCountryDetails(item: Country) {
         with(binding) {
-            ivCoatOfArm.load(item.coatOfArms?.png.ifNullOrBlank { "" } , centerCrop = false)
+            ivCoatOfArm.load(item.coatOfArms?.png.ifNullOrBlank { "" }) {
+                placeholder(R.drawable.placeholder)
+                scale(Scale.FIT)
+            }
             flagAlt.setTextOrGone(item.flags?.alt)
             coatOfArmAlt.setTextOrGone(item.coatOfArms?.alt)
             name.setTitleAndValueOrGone("Name:", item.nameStr)

@@ -41,20 +41,23 @@
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:layout_marginHorizontal">@dimen/_20sdp</item>
-    </style>
-
-    <style name="GcsButtonLightToDark" parent="GcsButton">
-        <item name="android:background">@drawable/gradient_light_to_dark_round</item>
-    </style>
-
-    <style name="GcsButtonDarkToLight" parent="GcsButton">
-        <item name="android:background">@drawable/gradient_dark_to_light_round</item>
-    </style>
-
-    <style name="GscButtonIcon" parent="Widget.MaterialComponents.Button.Icon">
-        <item name="android:background">@drawable/ripple</item>
         <item name="android:stateListAnimator">@animator/button_state_list_animator</item>
-        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="GcsButtonLightToDarkRound" parent="GcsButton">
+        <item name="android:background">@drawable/ripple_light_to_dark_round</item>
+    </style>
+
+    <style name="GcsButtonDarkToLightRound" parent="GcsButton">
+        <item name="android:background">@drawable/ripple_dark_to_light_round</item>
+    </style>
+
+    <style name="GcsButtonLightToDarkRect" parent="GcsButton">
+        <item name="android:background">@drawable/ripple_light_to_dark_rect</item>
+    </style>
+
+    <style name="GcsButtonDarkToLightRect" parent="GcsButton">
+        <item name="android:background">@drawable/ripple_dark_to_light_rect</item>
     </style>
 
 

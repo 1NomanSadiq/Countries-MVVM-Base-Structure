@@ -10,11 +10,15 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.gsc.app.data.DataStorePreferenceRepository
+import com.gsc.app.data.SharedPreference
 import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     @Inject
-    lateinit var prefs: DataStorePreferenceRepository
+    lateinit var dataStorePrefs: DataStorePreferenceRepository
+
+    @Inject
+    lateinit var prefs: SharedPreference
 
     protected val binding: VB by lazy { inflateViewBinding(layoutInflater) }
 

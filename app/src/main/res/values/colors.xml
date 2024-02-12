@@ -7,6 +7,7 @@
     <color name="primary">#2352ac</color>
     <color name="secondary">#7bd3df</color>
     <color name="light_gray">#a9a9a9</color>
+    <color name="very_light_gray">#DFDFDF</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">
         @color/gradient_light
     </color>

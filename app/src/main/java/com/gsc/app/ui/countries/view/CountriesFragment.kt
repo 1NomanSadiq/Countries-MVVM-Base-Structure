@@ -13,9 +13,10 @@ import com.gsc.app.ui.base.BaseFragment
 import com.gsc.app.ui.countries.state.CountriesNavigationState
 import com.gsc.app.ui.countries.state.CountriesUiState
 import com.gsc.app.ui.countries.viewmodel.CountriesViewModel
-import com.gsc.app.utils.extensions.adapter.attach
+import com.gsc.app.ui.home.view.CountriesFragmentDirections
 import com.gsc.app.utils.extensions.common.dialog
 import com.gsc.app.utils.extensions.common.launchAndRepeatWithViewLifecycle
+import com.gsc.app.utils.extensions.views.attach
 
 @AndroidEntryPoint
 class CountriesFragment : BaseFragment<FragmentCountriesBinding>() {

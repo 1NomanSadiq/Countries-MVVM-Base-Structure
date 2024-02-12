@@ -22,7 +22,7 @@ class CountriesRepo @Inject constructor(
             emit(
                 when (result.status) {
                     Result.Status.SUCCESS -> {
-                        /* cache data here using */ result.data!! // in success case it's not null so it's safe to use !!
+                        result.data!! // in success case it's not null so it's safe to use !!
                         Result.success(result.data)
                     }
 

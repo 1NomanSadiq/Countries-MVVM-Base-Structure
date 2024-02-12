@@ -1,8 +1,9 @@
-package com.gsc.app.utils.extensions.adapter
+package com.gsc.app.utils.extensions.views
 
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gsc.app.utils.misc.BaseAdapter
 
 fun <T> RecyclerView.attach(
     layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(
@@ -14,7 +15,7 @@ fun <T> RecyclerView.attach(
     itemDecoration: RecyclerView.ItemDecoration? = null,
     hasFixedSize: Boolean = false,
     snap: androidx.recyclerview.widget.SnapHelper? = null,
-    onBottomReached: ((Boolean) -> Unit)? = null,
+    onBottomReached: (() -> Unit)? = null,
     onLongClickListener: ((Int, T) -> Boolean)? = null,
     onItemClick: ((Int, T) -> Unit)? = null,
     isNestedScrollingEnabled: Boolean = false
@@ -35,7 +36,7 @@ fun <T> RecyclerView.attach(
     }
 
     if (onLongClickListener != null) {
-        adapter.onLongItemClickListener = { position, item ->
+        adapter.onLongItemClickListener = {position, item ->
             onLongClickListener.invoke(position, item)
         }
     }
@@ -43,7 +44,7 @@ fun <T> RecyclerView.attach(
     if (onBottomReached != null) {
         adapter.onBottomReachedListener = {
             Log.d("RecyclerView", "OnBottomReached")
-            onBottomReached(it)
+            onBottomReached()
         }
     }
 

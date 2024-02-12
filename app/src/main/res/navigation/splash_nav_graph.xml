@@ -24,7 +24,7 @@
 
     <activity
         android:id="@+id/countries_activity"
-        android:name="com.gsc.app.ui.countries.view.CountriesActivity"
+        android:name="com.gsc.app.ui.home.view.CountriesActivity"
         tools:layout="@layout/activity_countries" />
 
 </navigation>

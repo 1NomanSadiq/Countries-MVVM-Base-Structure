@@ -1,4 +1,4 @@
-package com.gsc.app.utils.extensions.adapter
+package com.gsc.app.utils.misc
 
 import android.view.LayoutInflater
 import android.view.View
