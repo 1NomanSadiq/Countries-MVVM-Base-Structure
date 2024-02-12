@@ -10,7 +10,7 @@ plugins {
 android {
     compileSdk 34
     defaultConfig {
-        applicationId "nom.mvvm.structure"
+        applicationId "com.gsc.app"
         minSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -28,7 +28,7 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    namespace 'nom.mvvm.structure'
+    namespace 'com.gsc.app'
 }
 
 dependencies {
@@ -50,10 +50,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.9.21"
 
-    //Glide for image loading
-    def glide = '4.16.0'
-    implementation "com.github.bumptech.glide:glide:$glide"
-    ksp "com.github.bumptech.glide:ksp:$glide"
+    //Coil for image loading
+    implementation 'io.coil-kt:coil:2.1.0'
 
     // Lifecycle - ViewModel
     def lifecycle = '2.6.2'

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/countries_fragment"
-        android:name="nom.mvvm.structure.ui.countries.view.CountriesFragment"
+        android:name="com.gsc.app.ui.countries.view.CountriesFragment"
         tools:layout="@layout/fragment_countries">
 
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/country_details_framgnet"
-        android:name="nom.mvvm.structure.ui.countries.view.CountryDetailsFragment"
+        android:name="com.gsc.app.ui.countries.view.CountryDetailsFragment"
         tools:layout="@layout/fragment_country_details" />
 
 </navigation>

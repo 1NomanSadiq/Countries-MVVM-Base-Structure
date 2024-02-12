@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/splash_fragment"
-        android:name="nom.mvvm.structure.ui.splash.ui.SplashScreenFragment"
+        android:name="com.gsc.app.ui.splash.ui.SplashScreenFragment"
         android:label="Splash"
         tools:layout="@layout/fragment_splash_screen">
 
@@ -24,7 +24,7 @@
 
     <activity
         android:id="@+id/countries_activity"
-        android:name="nom.mvvm.structure.ui.countries.view.CountriesActivity"
+        android:name="com.gsc.app.ui.countries.view.CountriesActivity"
         tools:layout="@layout/activity_countries" />
 
 </navigation>

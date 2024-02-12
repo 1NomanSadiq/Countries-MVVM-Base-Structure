@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 }
 
 include ':app'
-rootProject.name='MVVM Structure'
+rootProject.name='GSC'

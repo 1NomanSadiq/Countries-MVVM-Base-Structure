@@ -1,22 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="NomTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="GscTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/buttonPressed</item>
-        <item name="colorPrimaryVariant">@color/background</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#919EED</item>
-        <item name="colorSecondaryVariant">#919EED</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:windowFullscreen">false</item>
-        <item name="fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/core_sans_d</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/core_sans_d</item>
 
         <!-- Customize your theme here. -->
     </style>
@@ -32,15 +32,26 @@
         <item name="cornerSize">50%</item>
     </style>
 
-
-    <style name="NomButton" parent="Widget.Material3.Button">
-        <item name="android:background">@drawable/ripple</item>
-        <item name="android:stateListAnimator">@animator/button_state_list_animator</item>
-        <item name="android:textColor">@color/white</item>
+    <style name="GcsButton" parent="Widget.Material3.Button">
+        <item name="android:paddingVertical">@dimen/_12sdp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:layout_marginHorizontal">@dimen/_20sdp</item>
     </style>
 
+    <style name="GcsButtonLightToDark" parent="GcsButton">
+        <item name="android:background">@drawable/gradient_light_to_dark_round</item>
+    </style>
 
-    <style name="NomButtonIcon" parent="Widget.MaterialComponents.Button.Icon">
+    <style name="GcsButtonDarkToLight" parent="GcsButton">
+        <item name="android:background">@drawable/gradient_dark_to_light_round</item>
+    </style>
+
+    <style name="GscButtonIcon" parent="Widget.MaterialComponents.Button.Icon">
         <item name="android:background">@drawable/ripple</item>
         <item name="android:stateListAnimator">@animator/button_state_list_animator</item>
         <item name="android:textColor">@color/white</item>

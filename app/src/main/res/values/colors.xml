@@ -2,15 +2,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="button">#7B8CEC</color>
-    <color name="buttonPressed">#6879D1</color>
-    <color name="background">#3F51B5</color>
-    <color name="dim_background">#394AA5</color>
-    <color name="dialogBackground">@color/background</color>
-    <color name="light_gray">#9F9F9F</color>
-    <color name="dark_gray">#2C2C2C</color>
+    <color name="gradient_light">@color/secondary</color>
+    <color name="gradient_dark">@color/primary</color>
+    <color name="primary">#2352ac</color>
+    <color name="secondary">#7bd3df</color>
+    <color name="light_gray">#a9a9a9</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">
-        @color/buttonPressed
+        @color/gradient_light
     </color>
 
 </resources>
