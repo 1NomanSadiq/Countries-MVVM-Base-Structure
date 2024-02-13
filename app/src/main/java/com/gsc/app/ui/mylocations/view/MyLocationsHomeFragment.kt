@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.maps.SupportMapFragment
 import com.gsc.app.databinding.FragmentMyLocationsHomeBinding
 import com.gsc.app.ui.base.BaseFragment
 import com.gsc.app.ui.mylocations.state.MyLocationsNavigationState

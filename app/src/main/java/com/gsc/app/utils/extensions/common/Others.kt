@@ -14,6 +14,7 @@ import id.zelory.compressor.constraint.resolution
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+
 val Any.TAG get() = this.javaClass.simpleName
 fun Activity.compress(file: File?, onReady: (File) -> Unit) {
     showProgressDialog()
@@ -42,8 +43,6 @@ fun Fragment.compress(file: File?, onReady: (File) -> Unit) {
         onReady(compressedImage)
     }
 }
-
-fun Any.TAG() = this::class.java.simpleName
 
 inline fun <reified T> Gson.toJsonList(list: List<T>): String {
     return this.toJson(list)

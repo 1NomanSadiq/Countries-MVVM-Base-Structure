@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.gsc.app.R
 import com.gsc.app.databinding.LayoutActionBarBinding
 

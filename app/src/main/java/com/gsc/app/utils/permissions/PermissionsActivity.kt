@@ -11,8 +11,10 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.gsc.app.utils.extensions.common.TAG
 import dagger.hilt.android.AndroidEntryPoint
 import com.gsc.app.utils.extensions.common.toast
+import timber.log.Timber
 
 @AndroidEntryPoint
 class PermissionsActivity : AppCompatActivity() {
@@ -41,10 +43,10 @@ class PermissionsActivity : AppCompatActivity() {
         }
 
         if (deniedPermissions.isEmpty()) {
-            Log.d(TAG, "All permissions already granted.")
+            Timber.tag(TAG).d("All permissions already granted.")
             grant()
         } else {
-            Log.d(TAG, "Requesting permissions.")
+            Timber.tag(TAG).d("Requesting permissions.")
             requestPermissions(deniedPermissions.toTypedArray(), PERMISSION)
         }
     }
@@ -124,7 +126,6 @@ class PermissionsActivity : AppCompatActivity() {
     companion object {
         internal const val EXTRA_PERMISSIONS = "permissions"
         internal var permissionHandler: PermissionHandler? = null
-        internal const val TAG = "PermissionsActivity"
         private const val PERMISSION = 101
     }
 }

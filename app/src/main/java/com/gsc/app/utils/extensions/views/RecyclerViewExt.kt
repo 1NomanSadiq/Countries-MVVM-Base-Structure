@@ -1,9 +1,9 @@
 package com.gsc.app.utils.extensions.views
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gsc.app.utils.misc.BaseAdapter
+import timber.log.Timber
 
 fun <T> RecyclerView.attach(
     layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(
@@ -43,7 +43,7 @@ fun <T> RecyclerView.attach(
 
     if (onBottomReached != null) {
         adapter.onBottomReachedListener = {
-            Log.d("RecyclerView", "OnBottomReached")
+            Timber.tag("RecyclerView").d("OnBottomReached")
             onBottomReached()
         }
     }

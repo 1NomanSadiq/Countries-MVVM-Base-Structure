@@ -2,7 +2,6 @@ package com.gsc.app.ui.home.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.gsc.app.R
 import com.gsc.app.databinding.ActivityHomeBinding
