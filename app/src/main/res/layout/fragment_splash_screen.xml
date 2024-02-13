@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/gradient_light_to_dark"
     tools:context=".ui.splash.ui.SplashScreenFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:padding="@dimen/_80sdp"
+        android:src="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

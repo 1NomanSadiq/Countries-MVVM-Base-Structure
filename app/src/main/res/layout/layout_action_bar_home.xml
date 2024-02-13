@@ -2,22 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="?actionBarSize"
     android:background="@drawable/background_action_bar_home"
+    android:elevation="2dp"
     android:paddingHorizontal="@dimen/_10sdp"
-    android:paddingTop="@dimen/_30sdp"
-    android:paddingBottom="@dimen/_10sdp">
+    android:translationZ="2dp">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/logo"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/language_button"

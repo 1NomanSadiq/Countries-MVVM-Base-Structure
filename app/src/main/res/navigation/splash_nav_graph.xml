@@ -13,8 +13,8 @@
         tools:layout="@layout/fragment_splash_screen">
 
         <action
-            android:id="@+id/to_countries_activity"
-            app:destination="@id/countries_activity"
+            android:id="@+id/to_home_activity"
+            app:destination="@id/home_activity"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
@@ -23,8 +23,8 @@
     </fragment>
 
     <activity
-        android:id="@+id/countries_activity"
-        android:name="com.gsc.app.ui.home.view.CountriesActivity"
+        android:id="@+id/home_activity"
+        android:name="com.gsc.app.ui.home.view.HomeActivity"
         tools:layout="@layout/activity_countries" />
 
 </navigation>

@@ -26,11 +26,11 @@ class RoutesFragment : BaseFragment<FragmentRoutesBinding>() {
         FragmentRoutesBinding.inflate(inflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViews()
+        initializations()
         collectFlows()
     }
 
-    private fun initViews() {
+    private fun initializations() {
 
     }
 
@@ -58,6 +58,6 @@ class RoutesFragment : BaseFragment<FragmentRoutesBinding>() {
     }
 
     private fun moveToMyLocationActivity() {
-        findNavController().navigate(CountriesFragmentDirections.toCountryDetails())
+//        findNavController().navigate(RoutesFragmentDirections.toCountryDetails())
     }
 }

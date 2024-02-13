@@ -6,55 +6,26 @@
 
     <fragment
         android:id="@+id/map_fragment"
-        android:name="com.diabetic.coach.ui.main.dailydiary.DailyDiaryFragment"
-        tools:layout="@layout/fragment_daily_diary">
-
-        <action
-            android:id="@+id/action_dailyDiaryFragment_to_intakeFragment"
-            app:destination="@id/intake_fragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out" />
-        <action
-            android:id="@+id/action_dailyDiaryFragment_to_addFoodFragment"
-            app:destination="@id/add_food_fragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out">
-
-            <argument
-                android:name="mealType"
-                app:argType="string" />
-
-        </action>
-    </fragment>
+        android:name="com.gsc.app.ui.home.view.MapFragment"
+        tools:layout="@layout/fragment_map" />
 
     <fragment
-        android:id="@+id/add_food_fragment"
-        android:name="com.diabetic.coach.ui.main.addfood.AddFoodFragment"
-        tools:layout="@layout/fragment_add_food" />
+        android:id="@+id/routes_fragment"
+        android:name="com.gsc.app.ui.home.view.RoutesFragment"
+        tools:layout="@layout/fragment_routes" />
 
     <fragment
-        android:id="@+id/profile_fragment"
-        android:name="com.diabetic.coach.ui.main.ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/updates_fragment"
+        android:name="com.gsc.app.ui.home.view.UpdatesFragment"
+        tools:layout="@layout/fragment_updates" />
 
     <fragment
-        android:id="@+id/water_intake_fragment"
-        android:name="com.diabetic.coach.ui.main.WaterIntakeFragment"
-        tools:layout="@layout/fragment_water_intake" />
+        android:id="@+id/support_fragment"
+        android:name="com.gsc.app.ui.home.view.SupportFragment"
+        tools:layout="@layout/fragment_support" />
 
-    <fragment
-        android:id="@+id/add_meal_fragment"
-        android:name="com.diabetic.coach.ui.main.addmeal.AddMealFragment"
-        tools:layout="@layout/fragment_add_meal" />
-
-    <fragment
-        android:id="@+id/intake_fragment"
-        android:name="com.diabetic.coach.ui.main.intakedetails.IntakeFragment"
-        tools:layout="@layout/fragment_intake" />
-
-
+    <activity
+        android:id="@+id/my_locations_activity"
+        android:name="com.gsc.app.ui.mylocations.view.MyLocationsActivity"
+        tools:layout="@layout/activity_my_locations" />
 </navigation>

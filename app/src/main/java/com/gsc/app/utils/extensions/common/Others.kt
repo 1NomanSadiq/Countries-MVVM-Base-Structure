@@ -14,7 +14,7 @@ import id.zelory.compressor.constraint.resolution
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
-
+val Any.TAG get() = this.javaClass.simpleName
 fun Activity.compress(file: File?, onReady: (File) -> Unit) {
     showProgressDialog()
     val ctx = this

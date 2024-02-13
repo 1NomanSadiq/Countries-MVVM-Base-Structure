@@ -21,9 +21,6 @@ class GscActionBar @JvmOverloads constructor(
             try {
                 val title = getString(R.styleable.GscActionBar_title)
                 binding.tvTitle.text = title
-                backButton.setOnClickListener {
-                    (context as AppCompatActivity).onBackPressedDispatcher.onBackPressed()
-                }
             } finally {
                 recycle()
             }

@@ -58,6 +58,10 @@ import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.datastore.preferences.preferencesDataStore
+import com.gsc.app.utils.Constants
+
+val Context.dataStore by preferencesDataStore(name = Constants.PREFS_FILENAME)
 
 val Context.displayWidth: Int
     get() = resources.displayMetrics.widthPixels

@@ -9,7 +9,8 @@
         android:icon="@drawable/ic_map"
         android:title="@string/routes" />
     <item
-        android:id="@+id/my_locations_placeholder_fragment"
+        android:id="@+id/my_locations"
+        android:enabled="false"
         android:title="@string/my_locations" />
     <item
         android:id="@+id/updates_fragment"

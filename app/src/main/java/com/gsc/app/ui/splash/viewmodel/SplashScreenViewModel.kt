@@ -33,7 +33,7 @@ constructor(
     private fun onInitialState() = launchOnMainImmediate {
         _uiState.emit(SplashUiState.Loading)
         delay(2000)
-        _navigationState.emit(SplashNavigationState.MoveToCountriesScreen)
+        _navigationState.emit(SplashNavigationState.MoveToHomeScreen)
     }
 }
 

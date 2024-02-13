@@ -1,17 +1,14 @@
-package com.gsc.app.ui.home.view.placeholders
+package com.gsc.app.ui.mylocations.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.gsc.app.databinding.FragmentCountriesBinding
-import com.gsc.app.databinding.FragmentMyLocationsPlaceholderBinding
+import com.gsc.app.databinding.FragmentMyLocationsHomeBinding
 import com.gsc.app.ui.base.BaseFragment
 import com.gsc.app.ui.home.state.HomeNavigationState
 import com.gsc.app.ui.home.state.HomeUiState
-import com.gsc.app.ui.home.view.CountriesFragmentDirections
 import com.gsc.app.ui.home.viewmodel.HomeViewModel
 import com.gsc.app.utils.extensions.common.dialog
 import com.gsc.app.utils.extensions.common.launchAndRepeatWithViewLifecycle
@@ -19,19 +16,19 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MyLocationsPlaceholderFragment : BaseFragment<FragmentMyLocationsPlaceholderBinding>() {
+class MyLocationDirectionsFragment : BaseFragment<FragmentMyLocationsHomeBinding>() {
 
     private val viewModel: HomeViewModel by viewModels()
 
-    override fun inflateViewBinding(inflater: LayoutInflater): FragmentMyLocationsPlaceholderBinding =
-        FragmentMyLocationsPlaceholderBinding.inflate(inflater)
+    override fun inflateViewBinding(inflater: LayoutInflater): FragmentMyLocationsHomeBinding =
+        FragmentMyLocationsHomeBinding.inflate(inflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViews()
+        initializations()
         collectFlows()
     }
 
-    private fun initViews() {
+    private fun initializations() {
 
     }
 
@@ -41,7 +38,6 @@ class MyLocationsPlaceholderFragment : BaseFragment<FragmentMyLocationsPlacehold
             launch { uiState.collect { handleUiState(it) } }
             launch { navigationState.collect { handleNavigationState(it) } }
         }
-
     }
 
     private fun handleUiState(it: HomeUiState) {
@@ -59,6 +55,6 @@ class MyLocationsPlaceholderFragment : BaseFragment<FragmentMyLocationsPlacehold
     }
 
     private fun moveToMyLocationActivity() {
-        findNavController().navigate(CountriesFragmentDirections.toCountryDetails())
+        findNavController().navigate(MyLocationsHomeFragmentDirections.toMyLocationDirections())
     }
 }

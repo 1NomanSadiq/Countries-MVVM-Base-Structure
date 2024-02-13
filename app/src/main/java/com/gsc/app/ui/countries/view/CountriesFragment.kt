@@ -13,7 +13,6 @@ import com.gsc.app.ui.base.BaseFragment
 import com.gsc.app.ui.countries.state.CountriesNavigationState
 import com.gsc.app.ui.countries.state.CountriesUiState
 import com.gsc.app.ui.countries.viewmodel.CountriesViewModel
-import com.gsc.app.ui.home.view.CountriesFragmentDirections
 import com.gsc.app.utils.extensions.common.dialog
 import com.gsc.app.utils.extensions.common.launchAndRepeatWithViewLifecycle
 import com.gsc.app.utils.extensions.views.attach
@@ -28,11 +27,11 @@ class CountriesFragment : BaseFragment<FragmentCountriesBinding>() {
         FragmentCountriesBinding.inflate(inflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViews()
+        initializations()
         collectFlows()
     }
 
-    private fun initViews() {
+    private fun initializations() {
         binding.rvCountries.attach(
             adapter = adapter,
             onItemClick = { _, country ->

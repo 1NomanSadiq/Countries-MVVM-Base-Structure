@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/my_locations_home_fragment">
+
+    <fragment
+        android:id="@+id/my_locations_home_fragment"
+        android:name="com.gsc.app.ui.mylocations.view.MyLocationsHomeFragment"
+        tools:layout="@layout/fragment_my_locations_home">
+        <action
+            android:id="@+id/to_my_location_directions"
+            app:destination="@id/my_locations_activity"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out">
+            <argument
+                android:name="location_id"
+                android:defaultValue="-1"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/my_location_directions_fragment"
+        android:name="com.gsc.app.ui.mylocations.view.MyLocationDirectionsFragment"
+        tools:layout="@layout/fragment_my_location_directions">
+        <argument
+            android:name="location_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>
