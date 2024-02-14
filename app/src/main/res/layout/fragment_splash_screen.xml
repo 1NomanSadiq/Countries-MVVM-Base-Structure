@@ -113,8 +113,9 @@
                                 android:layout_height="@dimen/_40sdp"
                                 android:maxLength="9"
                                 android:hint="ایک کلوگرام کی قیمت"
-                                android:inputType="numberDecimal"
-                                android:padding="0dp"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:paddingVertical="0dp"
+                                android:inputType="number"
                                 android:singleLine="true"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_13ssp" />
@@ -156,8 +157,8 @@
                         android:hint="وزن (گرام)"
                         android:maxLength="9"
                         android:inputType="number"
-                        android:padding="0dp"
-                        android:singleLine="true"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="0dp"                        android:singleLine="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_13ssp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -183,8 +184,8 @@
                         android:hint="وزن (کلوگرام)"
                         android:inputType="number"
                         android:maxLength="9"
-                        android:padding="0dp"
-                        android:singleLine="true"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="0dp"                        android:singleLine="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_13ssp" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -222,8 +223,8 @@
                         android:hint="روپے"
                         android:maxLength="9"
                         android:inputType="number"
-                        android:padding="0dp"
-                        android:singleLine="true"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="0dp"                        android:singleLine="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_13ssp" />
                 </com.google.android.material.textfield.TextInputLayout>
