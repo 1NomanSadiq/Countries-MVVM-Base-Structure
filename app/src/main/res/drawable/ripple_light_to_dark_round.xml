@@ -1,19 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/primary">
-    <item android:id="@android:id/mask">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/primary" />
-            <corners android:radius="@dimen/_10sdp" />
-        </shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <ripple android:color="@color/very_light_gray">
+            <item android:id="@android:id/mask">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/very_light_gray" />
+                    <corners android:radius="@dimen/_10sdp" />
+                </shape>
+            </item>
+
+            <item android:id="@android:id/background">
+                <shape>
+                    <corners android:radius="@dimen/_10sdp" />
+                    <gradient android:endColor="@color/very_light_gray" android:startColor="@color/light_gray" />
+                </shape>
+            </item>
+        </ripple>
     </item>
 
-    <item android:id="@android:id/background">
-        <shape>
-            <corners android:radius="@dimen/_10sdp" />
-            <gradient
-                android:endColor="@color/gradient_dark"
-                android:startColor="@color/gradient_light" />
-        </shape>
+    <item>
+        <ripple android:color="@color/primary">
+            <item android:id="@android:id/mask">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/primary" />
+                    <corners android:radius="@dimen/_10sdp" />
+                </shape>
+            </item>
+
+            <item android:id="@android:id/background">
+                <shape>
+                    <corners android:radius="@dimen/_10sdp" />
+                    <gradient android:endColor="@color/gradient_dark" android:startColor="@color/gradient_light" />
+                </shape>
+            </item>
+        </ripple>
     </item>
-</ripple>
+</selector>

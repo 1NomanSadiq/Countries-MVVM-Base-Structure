@@ -26,6 +26,7 @@ class MyLocationsHomeFragment : BaseFragment<FragmentMyLocationsHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initializations()
         collectFlows()
+        findNavController().navigate(MyLocationsHomeFragmentDirections.toAddCarLocation())
     }
 
     private fun initializations() {

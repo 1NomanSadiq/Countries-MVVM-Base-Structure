@@ -2,12 +2,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark_gray">#575757</color>
+    <color name="gray">#787a79</color>
+    <color name="text_view_background">#f1f5f6</color>
+    <color name="text_view_stroke">#eaeaea</color>
     <color name="gradient_light">@color/secondary</color>
     <color name="gradient_dark">@color/primary</color>
     <color name="primary">#2352ac</color>
     <color name="secondary">#7bd3df</color>
     <color name="light_gray">#a9a9a9</color>
-    <color name="very_light_gray">#DFDFDF</color>
+    <color name="very_light_gray">#efedee</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">
         @color/gradient_light
     </color>

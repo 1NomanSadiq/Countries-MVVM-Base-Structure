@@ -6,4 +6,12 @@
     <string name="my_locations">My Locations</string>
     <string name="updates">Updates</string>
     <string name="support">Support</string>
+    <string name="address_label_optional">Address Label (Optional)</string>
+    <string name="street">Street</string>
+    <string name="area">Area</string>
+    <string name="city">City</string>
+    <string name="attach_picture">Attach Picture</string>
+    <string name="add_car_location">Add Car Location</string>
+    <string name="car_location_info">Car Location Info</string>
+    <string name="directions">Directions</string>
 </resources>

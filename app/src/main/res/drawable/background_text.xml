@@ -2,9 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
+            <corners android:radius="@dimen/_5sdp" />
+            <solid android:color="@color/text_view_background" />
             <stroke
-                android:width="0.5dp"
-                android:color="@color/light_gray" />
+                android:width="@dimen/_1sdp"
+                android:color="@color/text_view_stroke" />
         </shape>
     </item>
 </layer-list>

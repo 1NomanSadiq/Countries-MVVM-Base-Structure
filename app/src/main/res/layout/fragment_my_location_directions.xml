@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/_10sdp"
+    android:paddingHorizontal="@dimen/_20sdp"
     tools:context=".ui.mylocations.view.MyLocationDirectionsFragment">
 
     <com.gsc.app.utils.customviews.GscActionBar

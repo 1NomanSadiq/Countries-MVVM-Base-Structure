@@ -10,7 +10,7 @@
         tools:layout="@layout/fragment_my_locations_home">
         <action
             android:id="@+id/to_my_location_directions"
-            app:destination="@id/my_locations_activity"
+            app:destination="@id/my_location_directions_fragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
@@ -20,6 +20,14 @@
                 android:defaultValue="-1"
                 app:argType="integer" />
         </action>
+
+        <action
+            android:id="@+id/to_add_car_location"
+            app:destination="@id/add_car_location_fragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
 
     <fragment
@@ -31,5 +39,10 @@
             android:defaultValue="-1"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/add_car_location_fragment"
+        android:name="com.gsc.app.ui.mylocations.view.AddCarLocationFragment"
+        tools:layout="@layout/fragment_add_car_location"/>
 
 </navigation>
